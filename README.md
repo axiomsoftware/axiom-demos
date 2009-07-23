@@ -6,9 +6,7 @@ This is here purely to exemplify what is possible with Axiom Stack. It contains 
 If you have ideas for demos/examples please shoot us an email info at axiomsoftwareinc.com
 
 
-* * *
-
 Included
 ===========
 
-1 rdb - A relation database example. This example shows how to query for data and insert data using the API. It also shows you how to setup your database configuration for use in Axiom Stack.
+rdb - A relation database example. This example shows how to query for data and insert data using the API. It also shows you how to setup your database configuration for use in Axiom Stack.
