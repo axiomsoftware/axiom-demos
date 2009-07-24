@@ -1,0 +1,6 @@
+<div xmlns:tal="http://axiomstack.com/tale">
+  <h4>Followers:</h4>
+  <span tal:content="(this.followers)?this.followers.length:0"></span>
+  <h4>Following:</h4>
+  <span tal:content="(this.following)?this.following.length:0"></span>
+</div>
