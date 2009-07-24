@@ -1,0 +1,75 @@
+function logout() {
+    roster.logout();
+    res.redirect('/');
+}
+
+function login() {
+    var username = req.get('username');
+    var password = req.get('password');
+
+    var wrap = this.wrap({});
+    default xml namespace = wrap.namespace('');
+    var content = wrap.body..div.(@id == 'content')[0];
+
+    if (username && password) {
+	var user = roster.authenticate(username, password);
+
+	if (user) {
+	    roster.login(user);
+	    res.redirect('/');
+	}
+
+	content.appendChild(<><p>Logged In</p></>);
+    } else {
+	var form = this.user_form({});
+	form.appendChild(this.user_util_links({}));
+	content.appendChild(form);
+    }
+
+    return wrap;
+}
+
+function register() {
+    var username = req.get('username');
+    var password = req.get('password');
+    var email = req.get('email');
+    var first_name = req.get('first_name');
+    var last_name = req.get('last_name');
+
+    var wrap = this.wrap({});
+    default xml namespace = wrap.namespace('');
+    var content = wrap.body..div.(@id == 'content')[0];
+
+    if (username && password && email && first_name && last_name) {
+	var results = roster.create_user(
+	    {
+		username: username,
+		password: password,
+		email: email,
+		first_name: first_name,
+		last_name: last_name,
+		add_to: this.profile
+	    }
+	);
+
+	if (results.created) {
+	    roster.login(results.user);
+	    res.redirect('/');
+	}
+
+	content.appendChild(<>
+			    <div>
+				<p>Hermm... - {results.message}</p>
+				<p>User: {results.user.toSource()}</p>
+			    </div>
+			    </>);
+    } else {
+	var form = this.user_form({});
+	form.form.@action = "/register";
+	form.form..input.(@type == 'submit')[0].@value = "Register";
+	form.form[0].insertChildAfter(form.form..fieldset[0], this.registration_fields({}));
+	content.appendChild(form);
+    }
+
+    return wrap;
+}

@@ -1,0 +1,11 @@
+<html xmlns="http://www.w3c.org/1999/xhtml" xmlns:tal="http://axiomstack.com/tale">
+  <head>
+    <title>Your Twitter on Axiom Stack - Twax</title>
+  </head>
+  <body>
+    <div id="content">
+    </div>
+    <div id="rail">
+    </div>
+  </body>
+</html>
