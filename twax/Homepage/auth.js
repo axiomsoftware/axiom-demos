@@ -6,6 +6,7 @@ function logout() {
 function login() {
     var username = req.get('username');
     var password = req.get('password');
+    var fail = false;
 
     var wrap = this.wrap({});
     default xml namespace = wrap.namespace('');
@@ -16,15 +17,16 @@ function login() {
 
 	if (user) {
 	    roster.login(user);
-	    res.redirect('/');
+	    res.redirect(user.getURI());
 	}
-
-	content.appendChild(<><p>Logged In</p></>);
-    } else {
-	var form = this.user_form({});
-	form.appendChild(this.user_util_links({}));
-	content.appendChild(form);
+	fail = true;
     }
+
+    var form = this.user_form({});
+    if (fail)
+	form.insertChildBefore(form.form[0], <><p class="error">No user found.</p></>);
+    form.appendChild(this.user_util_links({}));
+    content.appendChild(form);
 
     return wrap;
 }

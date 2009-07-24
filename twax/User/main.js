@@ -1,7 +1,13 @@
 function main() {
     var wrap = this.wrap({});
     default xml namespace = wrap.namespace('');
-    var c = <>
+    var c = (session && (this == session.user))?this.auth_view():this.unauth_view();
+    wrap.body..div.(@id == 'content')[0].appendChild(c);
+    return wrap;
+}
+
+function auth_view() {
+    return <>
 	<div>
 	    <ul>
 		<li>{this.username}</li>
@@ -12,6 +18,14 @@ function main() {
 	    </ul>
 	</div>
 	</>;
-    wrap.body..div.(@id == 'content')[0].appendChild(c);
-    return wrap;
+}
+
+function unauth_view() {
+    return <>
+	<div>
+	    <ul>
+		<li>{this.username}</li>
+	    </ul>
+	</div>
+	</>;
 }

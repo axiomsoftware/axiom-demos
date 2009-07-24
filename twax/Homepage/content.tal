@@ -1,0 +1,7 @@
+<div class="main">
+  <h1>Welcome to Twax!</h1>
+  <div>
+    <a href="/login">Login</a>
+    <a href="/register">Register</a>
+  </div>
+</div>

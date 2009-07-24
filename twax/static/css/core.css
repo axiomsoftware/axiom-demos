@@ -1,0 +1,3 @@
+body{font-size:85%;font-family:san-serif;}
+.main a{display:block;width:auto;height:50px;padding:1em;font-size:3em;float:left;border:2px dotted #245;background:#f289bd;margin-right:10px}
+.main div{overflow:hidden;}

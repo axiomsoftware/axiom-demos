@@ -1,6 +1,9 @@
 <html xmlns="http://www.w3c.org/1999/xhtml" xmlns:tal="http://axiomstack.com/tale">
   <head>
     <title>Your Twitter on Axiom Stack - Twax</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/core.css" />
+    <script type="text/javascript" src="/static/js/jquery.js"> </script>
+    <script type="text/javascript" src="/static/js/core.js"> </script>
   </head>
   <body>
     <div id="content">
