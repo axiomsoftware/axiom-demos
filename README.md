@@ -9,5 +9,5 @@ If you have ideas for demos/examples please shoot us an email info at axiomsoftw
 Included
 ===========
 
-*rdb - A relation database example. This example shows how to query for data and insert data using the API. It also shows you how to setup your database configuration for use in Axiom Stack.
-*twax - A twitter type web application. This example really gets into how e4x within Axiom Stack works. There are quite a few examples and different uses of the API.
+* rdb - A relation database example. This example shows how to query for data and insert data using the API. It also shows you how to setup your database configuration for use in Axiom Stack.
+* twax - A twitter type web application. This example really gets into how e4x within Axiom Stack works. There are quite a few examples and different uses of the API.
