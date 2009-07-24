@@ -3,21 +3,24 @@ function main() {
     default xml namespace = wrap.namespace('');
     var c = (session && (this == session.user))?this.auth_view():this.unauth_view();
     wrap.body..div.(@id == 'content')[0].appendChild(c);
+    wrap.body..div.(@id == 'content')[0].appendChild(this.updates({messages: this.get_recent_messages()}));
     return wrap;
 }
 
+function get_recent_messages() {
+    var filters = [
+	{
+	    lastmodifiedby: this.username
+	}
+    ];
+
+    var results = app.getHits('Message', new OrFilter(filters), {sort:{'_lastmodified': 'desc'}}).objects(0,20);
+    return results;
+}
+
 function auth_view() {
-    return <>
-	<div>
-	    <ul>
-		<li>{this.username}</li>
-		<li>{this.password}</li>
-		<li>{this.email}</li>
-		<li>{this.first_name}</li>
-		<li>{this.last_name}</li>
-	    </ul>
-	</div>
-	</>;
+    var view = <>{this.content({})}</>;
+    return view;
 }
 
 function unauth_view() {
@@ -28,4 +31,8 @@ function unauth_view() {
 	    </ul>
 	</div>
 	</>;
+}
+
+function get_messages() {
+//    var start =
 }

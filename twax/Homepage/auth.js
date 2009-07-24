@@ -37,6 +37,8 @@ function register() {
     var email = req.get('email');
     var first_name = req.get('first_name');
     var last_name = req.get('last_name');
+    var fail = false;
+    var message = "";
 
     var wrap = this.wrap({});
     default xml namespace = wrap.namespace('');
@@ -56,22 +58,22 @@ function register() {
 
 	if (results.created) {
 	    roster.login(results.user);
-	    res.redirect('/');
+	    res.redirect(results.user.getURI());
 	}
 
-	content.appendChild(<>
-			    <div>
-				<p>Hermm... - {results.message}</p>
-				<p>User: {results.user.toSource()}</p>
-			    </div>
-			    </>);
-    } else {
-	var form = this.user_form({});
-	form.form.@action = "/register";
-	form.form..input.(@type == 'submit')[0].@value = "Register";
-	form.form[0].insertChildAfter(form.form..fieldset[0], this.registration_fields({}));
-	content.appendChild(form);
+	fail = true;
+	message = results.message;
     }
+
+    var form = this.user_form({});
+
+    if (fail)
+	form.insertChildBefore(form.form[0], <><p class="error">{message}</p></>);
+
+    form.form.@action = "/register";
+    form.form..input.(@type == 'submit')[0].@value = "Register";
+    form.form[0].insertChildAfter(form.form..fieldset[0], this.registration_fields({}));
+    content.appendChild(form);
 
     return wrap;
 }

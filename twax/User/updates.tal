@@ -1,0 +1,3 @@
+<ul id="messages" xmlns:tal="http://axiomstack.com/tale">
+  <li tal:repeat="message: data.messages" tal:content="message.content">Updating Messages</li>
+</ul>

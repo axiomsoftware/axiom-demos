@@ -1,0 +1,10 @@
+<div xmlns:tal="http://axiomstack.com/tale" class="status">
+  <form tal:attr="action: this.getURI()+'/update'" method="post">
+    <fieldset>
+      <textarea name="status"></textarea>
+    </fieldset>
+    <fieldset>
+      <input type="submit" value="Update!" />
+    </fieldset>
+  </form>
+</div>

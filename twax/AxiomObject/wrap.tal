@@ -6,6 +6,8 @@
     <script type="text/javascript" src="/static/js/core.js"> </script>
   </head>
   <body>
+    <div id="header" tal:replace="this.header({})">
+    </div>
     <div id="content">
     </div>
     <div id="rail">

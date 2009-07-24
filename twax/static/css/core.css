@@ -1,3 +1,10 @@
 body{font-size:85%;font-family:san-serif;}
+form,fieldset{border:0;}
+label,input{float:left;}
+label{width:150px;clear:both;}
+input{width:300px;}
 .main a{display:block;width:auto;height:50px;padding:1em;font-size:3em;float:left;border:2px dotted #245;background:#f289bd;margin-right:10px}
 .main div{overflow:hidden;}
+.error{border:2px dotted red;color:red;width:auto;padding:1em;}
+.status input{float:none;}
+.status textarea{width:400px;height:75px;}
